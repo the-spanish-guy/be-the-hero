@@ -11,9 +11,10 @@ module.exports = {
     .count()
 
     const incidents = await connection('incidents')
+    .join('ongs', 'ong_id', '=', 'incidents.ong_id') //join com 'ongs', onde ong_id('ong') seja igual a ong_id('incidents')
     .limit(5)
     .offset((page - 1) * 5)
-    .select('*')
+    .select(['incidents.*', 'ongs.name', 'ongs.email', 'ongs.whatsapp', 'ongs.estado', 'ongs.uf'])
 
     //setando no header o total de incidentes
     res.header('X-Total-Count', count['count(*)'])
