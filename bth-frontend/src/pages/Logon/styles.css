@@ -23,21 +23,3 @@
   font-size: 32px;
   margin-bottom: 32px;
 }
-
-.logon-container section.form form a {
-  display: flex;
-  align-items: center;
-  margin-top: 40px;
-  color: #41414D;
-  font-size: 18px;
-  text-decoration: bold;
-  transition: opacity .2s;
-}
-
-.logon-container section.form form a svg {
-  margin-right: 8px;
-}
-
-.logon-container section.form form a:hover {
-  opacity: .8;
-}
