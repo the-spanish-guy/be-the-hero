@@ -10,7 +10,7 @@ module.exports = {
   },
 
   async create (req, res) {
-    const { nome:name, email, whatsapp, estado, uf } = req.body;
+    const { name, email, whatsapp, estado, uf } = req.body;
     // console.log(data)
 
     //criando 4 bytes de caracteres aleatorios e convertendo- em string do tipo hexadecimal
