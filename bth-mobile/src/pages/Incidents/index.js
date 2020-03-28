@@ -11,6 +11,9 @@ export default function Incidents() {
 
   const [incidents, setIncidents] = useState([])
   const [totalItems, setTotalItems] = useState(0)
+  const [pages, setPages] = useState(1)
+  const [loading, setLoading] = useState(false)
+
   const navigation = useNavigation()
 
   function naviagateToDetail(incident) {
@@ -18,10 +21,24 @@ export default function Incidents() {
   }
 
   async function loadIncidents() {
-    const response = await api.get('/incidents')
 
-    setIncidents(response.data)
+    if (loading) {
+      return;
+    }
+
+    if(totalItems > 0 && incidents.length === totalItems) {
+      return;
+    }
+
+    setLoading(true)
+    
+    const response = await api.get('/incidents', {
+      params: { pages }
+    })
+    setIncidents([...incidents, ...response.data])
     setTotalItems(response.headers['x-total-count'])
+    setPages(pages + 1)
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -45,6 +62,8 @@ export default function Incidents() {
       data={incidents}
       keyExtractor={incident => String(incident.id)}
       showsVerticalScrollIndicator={false}
+      onEndReached={loadIncidents}
+      onEndReachedThreshold={0.2}
       renderItem={({ item:incident }) => (
 
         <View style={styles.incident}>
