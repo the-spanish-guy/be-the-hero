@@ -36,32 +36,38 @@ export default StyleSheet.create({
     lineHeight: 24,
     color: "#737380"
   },
+  
 
   incidentsList:{
     marginTop: 32
   },
+
   incident: {
     padding: 24,
     borderRadius: 8,
     backgroundColor: "#FFFFFF",
     marginBottom: 16
   },
+
   incidentProperty: {
     fontSize: 14,
     color: "#41414D",
     fontWeight: "bold"
   },
+
   incidentValue: {
     marginTop: 8,
     fontSize: 15,
     marginBottom: 24,
     fontWeight: "bold"
   },
+
   detailsButton: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center"
   },
+
   detailsButtonText: {
     color: "#E02041",
     fontSize: 15,
