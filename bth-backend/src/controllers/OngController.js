@@ -15,6 +15,8 @@ module.exports = {
 
     //criando 4 bytes de caracteres aleatorios e convertendo- em string do tipo hexadecimal
     const id = crypto.randomBytes(4).toString('HEX') 
+
+    console.log(id)
   
     await connection('ongs').insert({
         id,

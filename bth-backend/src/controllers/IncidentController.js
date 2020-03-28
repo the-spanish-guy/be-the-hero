@@ -7,14 +7,22 @@ module.exports = {
     const { page = 1 } = req.query;
     
     //buscanod o total de incidentes do banco de dados
-    const [count] = await connection('incidents')
-    .count()
+    const [count] = await connection('incidents').count()
 
+    //join com 'ongs', onde ong_id('ong') seja igual a ong_id('incidents')
     const incidents = await connection('incidents')
-    .join('ongs', 'ong_id', '=', 'incidents.ong_id') //join com 'ongs', onde ong_id('ong') seja igual a ong_id('incidents')
-    .limit(5)
-    .offset((page - 1) * 5)
-    .select(['incidents.*', 'ongs.name', 'ongs.email', 'ongs.whatsapp', 'ongs.estado', 'ongs.uf'])
+      .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
+      .limit(5)
+      .offset((page - 1) * 5)
+      .select([
+        'incidents.*',
+        'ongs.name',
+        'ongs.email',
+        'ongs.whatsapp',
+        'ongs.estado',
+        'ongs.uf'
+      ]);
+      console.log(incidents)
 
     //setando no header o total de incidentes
     res.header('X-Total-Count', count['count(*)'])
@@ -23,6 +31,9 @@ module.exports = {
   },
   
   async create(req, res) {
+
+    console.log(req.headers)
+
     const { title, description, value } = req.body
 
     const ong_id = req.headers.authorization
