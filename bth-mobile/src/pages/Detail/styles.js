@@ -32,7 +32,8 @@ export default StyleSheet.create({
   incidentValue: {
     marginTop: 8,
     fontSize: 15,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    color: "#737380"
   },
 
   contactBox: {

@@ -59,7 +59,8 @@ export default StyleSheet.create({
     marginTop: 8,
     fontSize: 15,
     marginBottom: 24,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    color: "#737380"
   },
 
   detailsButton: {
