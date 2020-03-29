@@ -10,4 +10,5 @@ app.use(express.json()) //avisando ao express para que converta o tudo em json
 app.use(routes)
 app.use(errors())
 
-app.listen(3333) //ouvindo a porta 3333
+// app.listen(3333) //ouvindo a porta 3333
+module.exports = app
