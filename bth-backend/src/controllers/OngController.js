@@ -1,5 +1,5 @@
-const crypto =require('crypto')
 const connection = require('../database/connection')
+const generateUniqueId = require('../util/generateUniqueId')
 
 module.exports = {
 
@@ -13,8 +13,7 @@ module.exports = {
     const { name, email, whatsapp, estado, uf } = req.body;
     // console.log(data)
 
-    //criando 4 bytes de caracteres aleatorios e convertendo- em string do tipo hexadecimal
-    const id = crypto.randomBytes(4).toString('HEX') 
+    const id = generateUniqueId()
 
     console.log(id)
   
